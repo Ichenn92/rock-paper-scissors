@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+    </head>
+
+    <body>
+        <script>
+            
+            const enumChoice = {
+                ROCK : 'rock',
+                PAPER : 'paper',
+                SCISSORS : 'scissors'
+            }
+            
+            //----------------------------------------------------------------------------
+            function playRound(playerSelection, computerSelection){
+                if (playerSelection == enumChoice.ROCK){
+                    switch(computerSelection){
+                        case enumChoice.ROCK : return "draw";
+                        case enumChoice.PAPER : return "You lose";
+                        case enumChoice.SCISSORS : return "You win";
+                    }
+                }
+                else if (playerSelection == enumChoice.PAPER){
+                    switch(computerSelection){
+                        case enumChoice.ROCK : return "You win";
+                        case enumChoice.PAPER : return "draw";
+                        case enumChoice.SCISSORS : return "You lose";
+                    }
+                }
+                else {
+                    switch(computerSelection){
+                        case enumChoice.ROCK :      return "You lose";
+                        case enumChoice.PAPER :     return "You win";
+                        case enumChoice.SCISSORS :  return "draw";
+                    }
+                }
+            }
+
+            //----------------------------------------------------------------------------
+            function playerSelection(){
+                let selection = prompt("what is your choice [rock, paper or scissors] ?");
+                console.log("your choice is " + selection);
+                return selection.toLowerCase();
+            }
+
+            //----------------------------------------------------------------------------
+            function randomComputerSelection(){
+                let selection = getChoice(Math.floor(Math.random() * 3));
+                console.log("AI choice is " + selection);
+                return selection.toLowerCase();
+                //return getChoice(selection);
+            }
+
+            //----------------------------------------------------------------------------
+            function getChoice(selection){
+                switch(selection){
+                    case 0 : return 'rock';
+                    case 1 : return 'paper';
+                    case 2 : return 'scissors';
+                    // case enumChoice.ROCK :     return 'rock';
+                    // case enumChoice.PAPER :    return 'paper';
+                    // case enumChoice.SCISSORS : return 'scissors';
+                }
+            }
+
+            //----------------------------------------------------------------------------
+            function game(){
+                let whoWin;
+                let playerPoint = 0;
+                let computerPoint = 0;
+                for (let i = 0 ; i < 5 ; ++i){
+                    // whoWin = playRound(playerSelection(), randomComputerSelection());
+                    whoWin = playRound(playerSelection(), 'rock');
+                    console.log(whoWin);
+                    switch(whoWin){
+                        case "draw" : break;
+                        case "You lose" : computerPoint++; break;
+                        case "You win" : playerPoint++; break;
+                    }
+                }
+                if(playerPoint < computerPoint){
+                    alert("You loose " + computerPoint + " to " + playerPoint)
+                }
+                else if(playerPoint > computerPoint){
+                    alert("You win " + playerPoint + " to " + computerPoint)
+                }
+                else {
+                    alert("Draw " + computerPoint + " to " + playerPoint)
+                }
+
+            }     
+
+            game();
+        </script>
+    </body>
+</html>
