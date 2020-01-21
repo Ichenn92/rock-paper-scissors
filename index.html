@@ -14,6 +14,9 @@
                 PAPER : 'paper',
                 SCISSORS : 'scissors'
             }
+            let playerPoint;
+            let computerPoint;
+            let newTrial = true;
             
             //----------------------------------------------------------------------------
             function playRound(playerSelection, computerSelection){
@@ -23,23 +26,23 @@
                 
                 if (playerSelection == enumChoice.ROCK){
                     switch(computerSelection){
-                        case enumChoice.ROCK     : return draw;
-                        case enumChoice.PAPER    : return lose;
-                        case enumChoice.SCISSORS : return win;
+                        case enumChoice.ROCK     : alert(draw); return "draw";
+                        case enumChoice.PAPER    : alert(lose); return "lose";
+                        case enumChoice.SCISSORS : alert(win);  return "win";
                     }
                 }
                 else if (playerSelection == enumChoice.PAPER){
                     switch(computerSelection){
-                        case enumChoice.ROCK     : return win;
-                        case enumChoice.PAPER    : return draw;
-                        case enumChoice.SCISSORS : return lose;
+                        case enumChoice.ROCK     : alert(win);  return "win";
+                        case enumChoice.PAPER    : alert(draw); return "draw";
+                        case enumChoice.SCISSORS : alert(lose); return "lose";
                     }
                 }
                 else {
                     switch(computerSelection){
-                        case enumChoice.ROCK     : return lose;
-                        case enumChoice.PAPER    : return win;
-                        case enumChoice.SCISSORS : return draw;
+                        case enumChoice.ROCK     : alert(lose); return "lose";
+                        case enumChoice.PAPER    : alert(win);  return "win";
+                        case enumChoice.SCISSORS : alert(draw); return "draw";
                     }
                 }
             }
@@ -88,19 +91,7 @@
             }
 
             //----------------------------------------------------------------------------
-            function game(){
-                let whoWin;
-                let playerPoint = 0;
-                let computerPoint = 0;
-                for (let i = 0 ; i < 5 ; ++i){
-                    whoWin = playRound(playerSelection(), randomComputerSelection());
-                    switch(whoWin){
-                        case "draw" : break;
-                        case "You lose" : ++computerPoint; break;
-                        case "You win" : ++playerPoint; break;
-                    }
-                    alert(`${whoWin}! [You ${playerPoint}-${computerPoint} Computer]`);
-                }
+            function finalWinner(playerPoint, computerPoint){
                 if(playerPoint < computerPoint){
                     alert("You loose " + computerPoint + " to " + playerPoint)
                 }
@@ -110,10 +101,53 @@
                 else {
                     alert("Draw " + computerPoint + " to " + playerPoint)
                 }
+            }
 
+            //----------------------------------------------------------------------------
+            function game(){
+                let whoWin;
+                let round = 0;
+                let roundMax = 0;
+                playerPoint = 0;
+                computerPoint = 0;
+
+                do {
+                    roundMax = prompt('How many rounds do you want to play? [from 1 to 10]');
+                } while ( !(roundMax >= 1 && roundMax <= 10) );
+
+                for (round = 0 ; round < roundMax ; round++){
+                    whoWin = playRound(playerSelection(), randomComputerSelection());
+                    switch(whoWin){
+                        case "draw" : break;
+                        case "lose" : computerPoint++; break;
+                        case "win" : playerPoint++; break;
+                    }
+                    alert(`Round ${round+1} = [You ${playerPoint}-${computerPoint} Computer]`);
+                }
             }     
+
+            //----------------------------------------------------------------------------
+            function tryAgain(){
+                let input;
+                do {
+                    input = prompt('Do you want to try again? [Y/n]');
+                    input = input.charAt(0).toLowerCase();
+                } while (input !== 'y' && input !== 'n');
+                
+                if ( input == 'y'){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+
             //--------------- MAIN -----------------
-            game();
+            while(newTrial){
+                game();
+                finalWinner(playerPoint, computerPoint);
+                newTrial = tryAgain();
+            }
         </script>
     </body>
 </html>
