@@ -52,7 +52,7 @@
                 let selection;
                 do {
                     selection = prompt("what is your choice [rock, paper or scissors] ?");
-                    selection = selection.charAt(0);
+                    selection = selection.charAt(0).toLowerCase();
                     console.log(selection);
                 } while (!isValid(selection));
                 
@@ -93,13 +93,13 @@
             //----------------------------------------------------------------------------
             function finalWinner(playerPoint, computerPoint){
                 if(playerPoint < computerPoint){
-                    alert("You loose " + computerPoint + " to " + playerPoint)
+                    alert("DAMN... YOU SUCK AT THAT GAME, YOU LOSE : " + computerPoint + " to " + playerPoint)
                 }
                 else if(playerPoint > computerPoint){
-                    alert("You win " + playerPoint + " to " + computerPoint)
+                    alert("YOU WON MY FRIEND : " + playerPoint + " to " + computerPoint)
                 }
                 else {
-                    alert("Draw " + computerPoint + " to " + playerPoint)
+                    alert("THE MATCH IS EVEN : " + computerPoint + " to " + playerPoint)
                 }
             }
 
