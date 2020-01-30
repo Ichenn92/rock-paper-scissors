@@ -5,15 +5,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
-    <!-- <script src="script.js"></script> -->
+    <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="part-1">
         <div class="blur">
-        <h1>"Do you want to start a game ?"</h1>
+            <h1>ROUND 1</h1>
+        </div>
+        <div class="keys">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissors">Scissors</button>
+        </div>
+        <div class="score">
+            <h2 class="score-text-result">
+                0
+            </h2>
+            <h2 class="score-text-result">
+                0
+            </h2>
+        </div>
+        <div class="score">
+            <h2 class="score-text">
+                YOU
+            </h2>
+            <h2 class="score-text">
+                ENNEMY
+            </h2>
+        </div>
+        <div class="blur">
+            <h3>you rocks !</h3>
         </div>
     </div>
+
+    <script>
+        document.getElementById("rock").addEventListener("click", respondClick);
+        respondClick () {
+            console.log("bonjour");
+        }
+    </script>
 </body>
 </html>

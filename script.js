@@ -38,14 +38,17 @@ function playRound(playerSelection, computerSelection) {
 
 //----------------------------------------------------------------------------
 function playerSelection() {
-    let selection;
-    do {
-        selection = prompt("what is your choice [rock, paper or scissors] ?");
-        selection = selection.charAt(0).toLowerCase();
-        console.log(selection);
-    } while (!isValid(selection));
-
-    return getChoice(selection);
+   document.getElementById("rock").addEventListener("click", console.log(yes));
+   
+    // if(document.getElementById("rock").addEventListener("click")) {
+    //     return getChoice(r);
+    // }
+    // else if(document.getElementById("paper").addEventListener("click")) {
+    //     return getChoice(p);
+    // }
+    // else if(document.getElementById("scissors").addEventListener("click")){
+    //     return getChoice(s);
+    // }
 }
 
 //----------------------------------------------------------------------------
@@ -65,19 +68,7 @@ function randomComputerSelection() {
     return selection;
 }
 
-//----------------------------------------------------------------------------
-function getChoice(selection) {
-    switch (selection) {
-        case 'r': selection = 0; break;
-        case 'p': selection = 1; break;
-        case 's': selection = 2; break; k
-    }
-    switch (selection) {
-        case 0: return 'rock';
-        case 1: return 'paper';
-        case 2: return 'scissors';
-    }
-}
+
 
 //----------------------------------------------------------------------------
 function finalWinner(playerPoint, computerPoint) {
