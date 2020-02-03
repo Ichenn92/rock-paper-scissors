@@ -55,6 +55,12 @@ body {
 .choices {
     margin-top: 25px;
     text-align: center;
+
+    /* No Selection */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .choice {
     margin: 0 15px;
@@ -63,27 +69,7 @@ body {
     border: 10px solid white;
     border-radius: 50%;
     transition: .2s;
-}
-@media (max-width: 700px){
-    .result-message {
-        font-size: 20px;
-    }
-    .choices {
-        display: flex;
-    }
-    .choice {
-        width: 30%;
-    }
-    .choice > img {
-        height : auto;
-        width : 100%;
-        
-    }
-}
-
-.choice:hover {
-    box-shadow: 0 0 30px white;
-    background-color: white;
+    cursor: pointer;
 }
 
 .green-glow {
@@ -106,3 +92,20 @@ body {
     pointer-events: none;  /**<-----------*/
   }
   
+
+  @media (max-width: 700px){
+    .result-message {
+        font-size: 20px;
+        height: 60px;
+    }
+    .choices {
+        display: flex;
+    }
+    .choice {
+        width: 30%;
+    }
+    .choice > img {
+        height : auto;
+        width : 100%;
+    }
+}
